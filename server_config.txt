@@ -1,0 +1,25 @@
+{
+   "version":"2017-10-01",
+   "resources":{
+      "workers":{
+         "count":1,
+         "sku":"G4",
+         "image":"index.docker.io/pytorch/pytorch:latest",
+         "type":"skuResource",
+         "commandLine":"sudo apt-get update;sudo apt-get install libglib2.0-0 libsm6 libxext6 -y;sudo apt-get install python-opencv sysstat htop -y; pip install torchvision --user; cd /hdfs/resrchprojvc3/chnuwa/pose_unsupervised; pip install -r requirements.txt --user; ./train_152_from_scratch.sh -i 3 -r 10 -f 0.7 --ransac 1 --repeats 3 --nofusion",
+         "constraints":[
+            {
+               "tag":"rack",
+               "type":"unlikeConstraint",
+               "value":"test-rack"
+            }
+         ]
+      }
+   },
+   "metadata":{
+      "username":"chnuwa",
+      "vc":"resrchprojvc3",
+      "name":"res152_3_10_0.7_1_iter3",
+      "cluster":"sc3"
+   }
+}
